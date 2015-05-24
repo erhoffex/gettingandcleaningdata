@@ -38,6 +38,8 @@ createTidyData <- function() {
   activitylabelspath <- file.path(projectdir, "UCI HAR Dataset", "activity_labels.txt")
   
   loadLabels <- function() {
+    library("plyr")
+    
     ## Load file with activity lables
     activitylabels <<- read.delim(activitylabelspath, sep=" ", header=FALSE)
     ## Load file with column headings
