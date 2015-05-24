@@ -9,6 +9,7 @@ downloadUCIFiles <- function() {
   library("RCurl")
   
   zipfile <- "UCI%20HAR%20Dataset.zip"
+  projectdir <- "projectfiles"
   
   ## If directory already exists, this function should just throw a warning
   dir.create(projectdir)
