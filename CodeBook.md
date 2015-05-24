@@ -1,49 +1,50 @@
 #run_analysis.R Code Book
 ###Author: sergiped
 
-##downloadUCIFiles()
+Derivative of data obtained from the UCI Machine Learning Repository
 
-* Creates *projectfiles* directory
-* Checks to see if we have already downloaded data
-  * If not, downloads UCI dataset using RCurl
+Specifically the Human Activity Recognition Using Smartphones Dataset Version 1.0
 
-##createTidyData()
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
-* Create several path variables to describe where files being used are at
+Generates a space delimited data file and R data frame whose rows correspond to an "observation" consisting of either the average of all data collected for the either the participant in the study or each of the activities performed by the participants.
 
-###loadLabels()
+###From the original dataset documentation:
 
-* Reads activity labels and feature labels
-* Reads subject and activity codes
-* Merge activity numeric code with text descriptor from file in UCI dataset
-* Assign variables to global environment so we can access them with other functions
+The data includes measures of:
 
-###loadMainData()
+- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+- Triaxial Angular velocity from the gyroscope.
+- A vector with time and frequency domain variables.
 
-* Loads the main datasets using read.fwf.  We could utilize another package to make this go much faster, but wanted to stick with base package for now.
-* Assign variables to global environment so we can access them with other functions
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz.
 
-###assignColumnLabels()
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).
 
-* Assign features from features file in UCI dataset to column names
-* Assign variables to global environment so we can access them with other functions
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals).
 
-###filterColumnLabels()
+These signals were used to estimate variables of the feature vector for each pattern:
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
-* Filter features in column names so we only have means and standard deviation measures
-* Assign variables to global environment so we can access them with other functions
+* tBodyAcc-XYZ
+* tGravityAcc-XYZ
+* tBodyAccJerk-XYZ
+* tBodyGyro-XYZ
+* tBodyGyroJerk-XYZ
+* tBodyAccMag
+* tGravityAccMag
+* tBodyAccJerkMag
+* tBodyGyroMag
+* tBodyGyroJerkMag
+* fBodyAcc-XYZ
+* fBodyAccJerk-XYZ
+* fBodyGyro-XYZ
+* fBodyAccMag
+* fBodyAccJerkMag
+* fBodyGyroMag
+* fBodyGyroJerkMag
 
-###combineDatasets()
+The set of variables that were estimated from these signals are:
 
-* Combine the test and training datasets into one combined dataset
-* Assign variables to global environment so we can access them with other functions
-
-###calculateColumnMeans()
-
-* Utilizing *ddply* from the *plyr* package, calculate column means by activity and by subject
-* Assign variables to global environment so we can access them with other functions
-
-##Room for improvement
-
-* Utilize faster function to read fixed width files
-* Figure out better way to assign variables vs. pushing to global environment.  Perhaps push to parent function's environment.  Don't want to pass a huge list of arugments however.
+* mean(): Mean value
+* std(): Standard deviation
