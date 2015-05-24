@@ -91,6 +91,14 @@ createTidyData <- function() {
     colnames(activitymeans)[1] <- "observation"
   }
   
+  loadLabels()
+  loadMainData()
+  assignColumnLabels()
+  filterColumnLabels()
+  addSubjectActivityLabels()
+  combineDatasets()
+  calculateColumnMeans()
+  
   ## Combine to form our tidy dataset
   tidydata <- rbind(subjectmeans, activitymeans)
   
