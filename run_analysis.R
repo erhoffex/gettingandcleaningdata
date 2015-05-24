@@ -78,3 +78,6 @@ colnames(activitymeans)[1] <- "observation"
 
 ## Combine to form our tidy dataset
 tidydata <- rbind(subjectmeans, activitymeans)
+
+## Write tidy data to table
+write.table(tidydata, "tidydata.txt", row.names=FALSE)
